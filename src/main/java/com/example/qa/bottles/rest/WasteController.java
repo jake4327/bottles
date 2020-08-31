@@ -33,4 +33,9 @@ public class WasteController {
     public Waste getWasteById(@PathVariable Long id){
         return this.wasteService.findWasteById(id);
     }
+
+    @PutMapping("/update_waste/{id}")
+    public Waste updateWaste(@PathVariable Long id, @RequestBody Waste waste){
+        return this.wasteService.updateWaste(id, waste);
+    }
 }

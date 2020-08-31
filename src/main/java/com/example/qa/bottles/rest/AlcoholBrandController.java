@@ -2,6 +2,7 @@ package com.example.qa.bottles.rest;
 
 import com.example.qa.bottles.domain.AlcoholBrand;
 import com.example.qa.bottles.domain.AlcoholBrand;
+import com.example.qa.bottles.domain.AlcoholBrand;
 import com.example.qa.bottles.service.AlcoholBrandService;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,4 +37,10 @@ public class AlcoholBrandController {
     public AlcoholBrand getAlcoholBrandById(@PathVariable Long id){
         return this.alcoholBrandService.findAlcoholBrandById(id);
     }
+
+    @PutMapping("/update_alcoholBrand/{id}")
+    public AlcoholBrand updateAlcoholBrand(@PathVariable Long id, @RequestBody AlcoholBrand alcoholBrand){
+        return this.alcoholBrandService.updateAlcoholBrand(id, alcoholBrand);
+    }
+    
 }

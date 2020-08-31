@@ -34,4 +34,10 @@ public class BarController {
     public Bar getBarById(@PathVariable Long id){
         return this.barService.findBarById(id);
     }
+
+    @PutMapping("/update_bar/{id}")
+    public Bar updateBar(@PathVariable Long id, @RequestBody Bar bar){
+        return this.barService.updateBar(id, bar);
+    }
+
 }

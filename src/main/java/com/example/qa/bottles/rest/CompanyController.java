@@ -1,7 +1,6 @@
 package com.example.qa.bottles.rest;
 
 import com.example.qa.bottles.domain.Company;
-import com.example.qa.bottles.domain.Company;
 import com.example.qa.bottles.service.CompanyService;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,5 +32,10 @@ public class CompanyController {
     @GetMapping("/get_company_by_id/{id}")
     public Company getCompanyById(@PathVariable Long id){
         return this.companyService.findCompanyById(id);
+    }
+
+    @PutMapping("/update_company/{id}")
+    public Company updateCompany(@PathVariable Long id, @RequestBody Company company){
+        return this.companyService.updateCompany(id, company);
     }
 }

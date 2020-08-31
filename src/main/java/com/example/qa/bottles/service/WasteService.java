@@ -30,7 +30,7 @@ public class WasteService {
         return this.repo.findById(id).orElseThrow(WasteNotFoundException::new);
     }
 
-    public Waste updateWaste(Long id, Waste waste) throws Throwable {
+    public Waste updateWaste(Long id, Waste waste){
         Waste update = findWasteById(id);
         update.setTotalWaste(waste.getTotalWaste());
         return this.repo.save(update);
