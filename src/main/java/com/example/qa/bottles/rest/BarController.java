@@ -1,13 +1,8 @@
 package com.example.qa.bottles.rest;
 
-import com.example.qa.bottles.domain.AlcoholBrand;
 import com.example.qa.bottles.domain.Bar;
-import com.example.qa.bottles.service.AlcoholBrandService;
 import com.example.qa.bottles.service.BarService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +23,15 @@ public class BarController {
     @PostMapping("/create_bar")
     public  Bar createBar(@RequestBody Bar bar){
         return this.barService.createBar(bar);
+    }
+
+    @DeleteMapping("/delete_bar/{id}")
+    public Boolean deleteBar(@PathVariable Long id){
+        return this.barService.deleteBarById(id);
+    }
+
+    @GetMapping("/get_bar_by_id/{id}")
+    public Bar getBarById(@PathVariable Long id){
+        return this.barService.findBarById(id);
     }
 }

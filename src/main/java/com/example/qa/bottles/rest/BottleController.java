@@ -1,10 +1,9 @@
 package com.example.qa.bottles.rest;
 
 import com.example.qa.bottles.domain.Bottle;
+import com.example.qa.bottles.domain.Bottle;
 import com.example.qa.bottles.service.BottleService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +23,15 @@ public class BottleController {
     @PostMapping("/create_bottle")
     public  Bottle createBottle(@RequestBody Bottle bottle){
         return this.bottleService.createBottle(bottle);
+    }
+
+    @DeleteMapping("/delete_bottle/{id}")
+    public Boolean deleteBottle(@PathVariable Long id){
+        return this.bottleService.deleteBottleById(id);
+    }
+
+    @GetMapping("/get_bottle_by_id/{id}")
+    public Bottle getBottleById(@PathVariable Long id){
+        return this.bottleService.findBottleById(id);
     }
 }
