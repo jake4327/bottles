@@ -1,6 +1,7 @@
 package com.example.qa.bottles.service;
 
 import com.example.qa.bottles.domain.AlcoholBrand;
+import com.example.qa.bottles.exceptions.AlcoholBrandNotFoundException;
 import com.example.qa.bottles.repo.AlcoholBrandRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,8 @@ public class AlcoholBrandService {
     }
 
     public AlcoholBrand findAlcoholBrandById(Long id){
-        //return this.repo.findById(id).orElseThrow(AlcoholBrandNotFoundException::new);
-        return null;
+        return this.repo.findById(id).orElseThrow(AlcoholBrandNotFoundException::new);
+
     }
 
     public AlcoholBrand updateAlcoholBrand(Long id, AlcoholBrand alcoholBrand){
@@ -38,7 +39,7 @@ public class AlcoholBrandService {
 
     public Boolean deleteAlcoholBrandById(Long id){
         if(!this.repo.existsById(id)){
-            //throw new NoteNotFoundException();
+            throw new AlcoholBrandNotFoundException();
         }
         this.repo.deleteById(id);
         return this.repo.existsById(id);

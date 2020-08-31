@@ -1,6 +1,7 @@
 package com.example.qa.bottles.service;
 
 import com.example.qa.bottles.domain.Bar;
+import com.example.qa.bottles.exceptions.BarNotFoundException;
 import com.example.qa.bottles.repo.BarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,8 @@ public class BarService {
     }
 
     public Bar findBarById(Long id){
-        //return this.repo.findById(id).orElseThrow(BarNotFoundException::new);
-        return null;
+        return this.repo.findById(id).orElseThrow(BarNotFoundException::new);
+
     }
 
     public Bar updateBar(Long id, Bar bar){
@@ -38,7 +39,7 @@ public class BarService {
 
     public Boolean deleteBarById(Long id){
         if(!this.repo.existsById(id)){
-            //throw new NoteNotFoundException();
+            throw new BarNotFoundException();
         }
         this.repo.deleteById(id);
         return this.repo.existsById(id);

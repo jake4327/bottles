@@ -1,6 +1,7 @@
 package com.example.qa.bottles.service;
 
 import com.example.qa.bottles.domain.Company;
+import com.example.qa.bottles.exceptions.CompanyNotFoundException;
 import com.example.qa.bottles.repo.CompanyRepository;
 import com.example.qa.bottles.repo.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,7 @@ public class CompanyService {
     }
 
     public Company findCompanyById(Long id){
-        //return this.repo.findById(id).orElseThrow(CompanyNotFoundException::new);
-        return null;
+        return this.repo.findById(id).orElseThrow(CompanyNotFoundException::new);
     }
 
     public Company updateCompany(Long id, Company company){

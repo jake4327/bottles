@@ -1,6 +1,7 @@
 package com.example.qa.bottles.service;
 
 import com.example.qa.bottles.domain.Bottle;
+import com.example.qa.bottles.exceptions.BottleNotFoundException;
 import com.example.qa.bottles.repo.BottleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,7 @@ public class BottleService {
     }
 
     public Bottle findBottleById(Long id){
-        //return this.repo.findById(id).orElseThrow(BottleNotFoundException::new);
-        return null;
+        return this.repo.findById(id).orElseThrow(BottleNotFoundException::new);
     }
 
     public Bottle updateBottle(Long id, Bottle bottle){
@@ -38,7 +38,7 @@ public class BottleService {
 
     public Boolean deleteBottleById(Long id){
         if(!this.repo.existsById(id)){
-            //throw new NoteNotFoundException();
+            throw new BottleNotFoundException();
         }
 
         this.repo.deleteById(id);
