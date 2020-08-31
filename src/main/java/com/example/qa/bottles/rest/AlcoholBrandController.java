@@ -18,7 +18,7 @@ public class AlcoholBrandController {
         this.alcoholBrandService = alcoholBrandService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/get_brands")
     public List<AlcoholBrand> getAllBrands(){
         return this.alcoholBrandService.readAllAlcoholBrands();
     }

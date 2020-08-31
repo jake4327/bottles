@@ -16,7 +16,7 @@ public class BottleController {
         this.bottleService = bottleService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/get_bottles")
     public List<Bottle> getAllBrands(){
         return this.bottleService.readAllBottles();
     }

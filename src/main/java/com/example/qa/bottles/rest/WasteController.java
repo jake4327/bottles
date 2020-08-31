@@ -14,7 +14,7 @@ public class WasteController {
         this.wasteService = wasteService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/get_waste")
     public List<Waste> getAllBrands(){
         return this.wasteService.readAllWastes();
     }

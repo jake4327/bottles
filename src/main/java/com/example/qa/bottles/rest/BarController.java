@@ -15,7 +15,7 @@ public class BarController {
         this.barService = barService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/get_bars")
     public List<Bar> getAllBrands(){
         return this.barService.readAllBars();
     }
