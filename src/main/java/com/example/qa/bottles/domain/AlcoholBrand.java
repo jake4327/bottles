@@ -22,6 +22,14 @@ public class AlcoholBrand {
         this.name = name;
     }
 
+    public Long getAlcoholBrandId() {
+        return alcoholBrandId;
+    }
+
+   /* public void setAlcoholBrandId(Long alcoholBrandId) {
+        this.alcoholBrandId = alcoholBrandId;
+    }*/
+
     public String getName() {
         return name;
     }

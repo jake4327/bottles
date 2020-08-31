@@ -27,6 +27,9 @@ public class Bottle {
     @Column
     private Float emptyWeight;
 
+    @Column
+    private String name;
+
     public Bottle(Float currentWeight) {
         this.currentWeight = currentWeight;
     }
@@ -83,5 +86,13 @@ public class Bottle {
 
     public void setEmptyWeight(Float emptyWeight) {
         this.emptyWeight = emptyWeight;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
