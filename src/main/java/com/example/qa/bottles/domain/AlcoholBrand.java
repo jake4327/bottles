@@ -1,9 +1,6 @@
 package com.example.qa.bottles.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class AlcoholBrand {
@@ -14,6 +11,9 @@ public class AlcoholBrand {
 
     @Column
     private String name;
+
+    @OneToMany(targetEntity = Bottle.class)
+    private Bottle bottle;
 
     public AlcoholBrand(){
     }

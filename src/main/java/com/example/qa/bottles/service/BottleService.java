@@ -1,29 +1,38 @@
 package com.example.qa.bottles.service;
 
 import com.example.qa.bottles.domain.Bottle;
+import com.example.qa.bottles.dto.BottleDTO;
 import com.example.qa.bottles.exceptions.BottleNotFoundException;
 import com.example.qa.bottles.repo.BottleRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BottleService {
 
     private final BottleRepository repo;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public BottleService(BottleRepository repo) {
+    public BottleService(BottleRepository repo, ModelMapper modelMapper) {
         this.repo = repo;
+        this.modelMapper = modelMapper;
     }
 
-    public List<Bottle> readAllBottles(){
-        return this.repo.findAll();
+    private BottleDTO mapToBottleDTO(Bottle bottle){
+        return this.modelMapper.map(bottle, BottleDTO.class);
     }
 
-    public Bottle createBottle(Bottle noteBook){
-        return this.repo.save(noteBook);
+    public List<BottleDTO> readAllBottles(){
+        return this.repo.findAll().stream().map(this::mapToBottleDTO).collect(Collectors.toList());
+    }
+
+    public BottleDTO createBottle(Bottle bottle){
+        return this.mapToBottleDTO(this.repo.save(bottle));
     }
 
     public Bottle findBottleById(Long id){

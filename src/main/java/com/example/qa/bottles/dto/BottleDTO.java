@@ -1,51 +1,33 @@
-package com.example.qa.bottles.domain;
+package com.example.qa.bottles.dto;
 
-import javax.persistence.*;
 
-@Entity
-public class Bottle {
+public class BottleDTO {
 
-    @Id
-    @GeneratedValue
     private Long bottleId;
-
-    @Column
     private Float newWeight;
-
-    @Column
     private Float oldWeight;
-
-    @Column
     private Float currentWeight;
-
-    @Column
     private Float fullWeight;
-
-    @Column
     private Float emptyWeight;
-
-    @Column
     private String name;
 
-    @ManyToOne(targetEntity = AlcoholBrand.class)
-    private AlcoholBrand alcoholBrand;
 
-    public Bottle(Float currentWeight) {
+    public BottleDTO(Float currentWeight) {
         this.currentWeight = currentWeight;
     }
 
-    public Bottle(Float fullWeight, Float emptyWeight) {
+    public BottleDTO(Float fullWeight, Float emptyWeight) {
         this.fullWeight = fullWeight;
         this.emptyWeight = emptyWeight;
     }
 
-    public Bottle(Bottle bottle) {
+    public BottleDTO(BottleDTO bottle) {
         this.fullWeight = bottle.fullWeight;
         this.emptyWeight = bottle.emptyWeight;
         this.currentWeight = bottle.currentWeight;
     }
 
-    public Bottle() {
+    public BottleDTO() {
     }
 
     public Float getNewWeight() {
