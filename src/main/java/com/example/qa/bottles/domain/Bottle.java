@@ -2,6 +2,7 @@ package com.example.qa.bottles.domain;
 
 import javax.persistence.*;
 
+
 @Entity
 public class Bottle {
 
@@ -94,5 +95,13 @@ public class Bottle {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public AlcoholBrand getAlcoholBrand() {
+        return alcoholBrand;
+    }
+
+    public void setNoteBook(AlcoholBrand alcoholBrand) {
+        this.alcoholBrand = alcoholBrand;
     }
 }

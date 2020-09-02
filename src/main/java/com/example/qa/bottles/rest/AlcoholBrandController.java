@@ -1,11 +1,13 @@
 package com.example.qa.bottles.rest;
 
 import com.example.qa.bottles.domain.AlcoholBrand;
-import com.example.qa.bottles.domain.AlcoholBrand;
-import com.example.qa.bottles.domain.AlcoholBrand;
+import com.example.qa.bottles.dto.AlcoholBrandDTO;
 import com.example.qa.bottles.service.AlcoholBrandService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -19,28 +21,31 @@ public class AlcoholBrandController {
     }
 
     @GetMapping("/get_brands")
-    public List<AlcoholBrand> getAllBrands(){
-        return this.alcoholBrandService.readAllAlcoholBrands();
+    public ResponseEntity<List<AlcoholBrandDTO>> getAllBrands(){
+        return ResponseEntity.ok(this.alcoholBrandService.readAllAlcoholBrands());
     }
 
     @PostMapping("/create_brand")
-    public  AlcoholBrand createAlcoholBrand(@RequestBody AlcoholBrand alcoholBrand){
-        return this.alcoholBrandService.createAlcoholBrand(alcoholBrand);
+    public ResponseEntity<AlcoholBrandDTO> createAlcoholBrand(@RequestBody AlcoholBrand alcoholBrand){
+        return new ResponseEntity<AlcoholBrandDTO>(this.alcoholBrandService.createAlcoholBrand(alcoholBrand), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete_alcoholBrand/{id}")
-    public Boolean deleteAlcoholBrand(@PathVariable Long id){
-        return this.alcoholBrandService.deleteAlcoholBrandById(id);
+    public ResponseEntity<?> deleteAlcoholBrand(@PathVariable Long id){
+        return this.alcoholBrandService.deleteAlcoholBrandById(id)
+                ? ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
+                : ResponseEntity.noContent().build();
     }
 
     @GetMapping("/get_alcoholBrand_by_id/{id}")
-    public AlcoholBrand getAlcoholBrandById(@PathVariable Long id){
-        return this.alcoholBrandService.findAlcoholBrandById(id);
+    public ResponseEntity<AlcoholBrandDTO> getAlcoholBrandById(@PathVariable Long id){
+        return ResponseEntity.ok(this.alcoholBrandService.findAlcoholBrandById(id));
+
     }
 
     @PutMapping("/update_alcoholBrand/{id}")
-    public AlcoholBrand updateAlcoholBrand(@PathVariable Long id, @RequestBody AlcoholBrand alcoholBrand){
-        return this.alcoholBrandService.updateAlcoholBrand(id, alcoholBrand);
+    public ResponseEntity<AlcoholBrandDTO> updateNoteWithPathParam(@PathParam("id") Long id, @RequestBody AlcoholBrand alcoholBrand) {
+        return ResponseEntity.ok(this.alcoholBrandService.updateAlcoholBrand(id, alcoholBrand));
     }
     
 }

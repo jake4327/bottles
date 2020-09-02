@@ -35,14 +35,14 @@ public class BottleService {
         return this.mapToBottleDTO(this.repo.save(bottle));
     }
 
-    public Bottle findBottleById(Long id){
-        return this.repo.findById(id).orElseThrow(BottleNotFoundException::new);
+    public BottleDTO findBottleById(Long id){
+        return this.mapToBottleDTO(repo.findById(id).orElseThrow(BottleNotFoundException::new));
     }
 
-    public Bottle updateBottle(Long id, Bottle bottle){
-        Bottle update = findBottleById(id);
+    public BottleDTO updateBottle(Long id, Bottle bottle){
+        Bottle update = this.repo.findById(id).orElseThrow(BottleNotFoundException::new);
         update.setName(bottle.getName());
-        return this.repo.save(update);
+        return this.mapToBottleDTO(repo.save(update));
     }
 
     public Boolean deleteBottleById(Long id){
