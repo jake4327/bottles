@@ -9,7 +9,7 @@ public class AlcoholBrand {
 
     @Id
     @GeneratedValue
-    private Long alcoholBrandId;
+    private Long id;
 
     @Column
     private String name;
@@ -24,12 +24,12 @@ public class AlcoholBrand {
         this.name = name;
     }
 
-    public Long getAlcoholBrandId() {
-        return alcoholBrandId;
+    public Long getId() {
+        return id;
     }
 
-    public void setAlcoholBrandId(Long alcoholBrandId) {
-        this.alcoholBrandId = alcoholBrandId;
+    public void setId(Long alcoholBrandId) {
+        this.id = alcoholBrandId;
     }
 
     public String getName() {

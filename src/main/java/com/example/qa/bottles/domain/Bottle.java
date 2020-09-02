@@ -8,22 +8,7 @@ public class Bottle {
 
     @Id
     @GeneratedValue
-    private Long bottleId;
-
-    @Column
-    private Float newWeight;
-
-    @Column
-    private Float oldWeight;
-
-    @Column
-    private Float currentWeight;
-
-    @Column
-    private Float fullWeight;
-
-    @Column
-    private Float emptyWeight;
+    private Long id;
 
     @Column
     private String name;
@@ -31,62 +16,19 @@ public class Bottle {
     @ManyToOne(targetEntity = AlcoholBrand.class)
     private AlcoholBrand alcoholBrand;
 
-    public Bottle(Float currentWeight) {
-        this.currentWeight = currentWeight;
-    }
-
-    public Bottle(Float fullWeight, Float emptyWeight) {
-        this.fullWeight = fullWeight;
-        this.emptyWeight = emptyWeight;
-    }
-
-    public Bottle(Bottle bottle) {
-        this.fullWeight = bottle.fullWeight;
-        this.emptyWeight = bottle.emptyWeight;
-        this.currentWeight = bottle.currentWeight;
+    public Bottle(String name){
+        this.name = name;
     }
 
     public Bottle() {
     }
 
-    public Float getNewWeight() {
-        return newWeight;
+    public Long getId() {
+        return id;
     }
 
-    public void setNewWeight(Float newWeight) {
-        this.newWeight = newWeight;
-    }
-
-    public Float getOldWeight() {
-        return oldWeight;
-    }
-
-    public void setOldWeight(Float oldWeight) {
-        this.oldWeight = oldWeight;
-    }
-
-    public Float getCurrentWeight() {
-        return currentWeight;
-    }
-
-    public void setCurrentWeight(Float currentWeight) {
-        this.currentWeight = currentWeight;
-    }
-
-    public Float getFullWeight() {
-        return fullWeight;
-    }
-
-    public void setFullWeight(Float fullWeight) {
-        this.fullWeight = fullWeight;
-    }
-
-    public Float getEmptyWeight() {
-        return emptyWeight;
-    }
-
-    public void setEmptyWeight(Float emptyWeight) {
-        this.emptyWeight = emptyWeight;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -101,7 +43,7 @@ public class Bottle {
         return alcoholBrand;
     }
 
-    public void setNoteBook(AlcoholBrand alcoholBrand) {
+    public void setAlcoholBrand(AlcoholBrand alcoholBrand) {
         this.alcoholBrand = alcoholBrand;
     }
 }

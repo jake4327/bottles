@@ -53,8 +53,5 @@ public class BottleService {
         this.repo.deleteById(id);
         return this.repo.existsById(id);
     }
-    
 
-    
-    
 }

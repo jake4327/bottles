@@ -9,27 +9,25 @@ import java.util.List;
 
 public class AlcoholBrandDTO {
 
-
-
-        private Long alcoholBrandId;
+        private Long id;
         private String name;
         private List<BottleDTO> bottles = new ArrayList<>();
-
 
         public AlcoholBrandDTO(){
         }
 
         public AlcoholBrandDTO(String name){
+            super();
             this.name = name;
         }
 
-        public Long getAlcoholBrandId() {
-            return alcoholBrandId;
+        public Long getId() {
+            return id;
         }
 
-   /* public void setAlcoholBrandId(Long alcoholBrandId) {
-        this.alcoholBrandId = alcoholBrandId;
-    }*/
+        public void setId(Long id) {
+            this.id = id;
+        }
 
         public String getName() {
             return name;
@@ -37,6 +35,14 @@ public class AlcoholBrandDTO {
 
         public void setName(String name) {
             this.name = name;
+        }
+
+        public List<BottleDTO> getBottles() {
+        return bottles;
+    }
+
+        public void setBottles(List<BottleDTO> bottles) {
+            this.bottles = bottles;
         }
 }
 

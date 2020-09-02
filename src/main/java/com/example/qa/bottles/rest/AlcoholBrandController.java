@@ -24,6 +24,10 @@ public class AlcoholBrandController {
     public ResponseEntity<List<AlcoholBrandDTO>> getAllBrands(){
         return ResponseEntity.ok(this.alcoholBrandService.readAllAlcoholBrands());
     }
+    /*@GetMapping("/")
+    public ResponseEntity<List<NoteDTO>> getAllNotes(){
+        return ResponseEntity.ok(this.noteService.readAllNotes());
+    }*/
 
     @PostMapping("/create_brand")
     public ResponseEntity<AlcoholBrandDTO> createAlcoholBrand(@RequestBody AlcoholBrand alcoholBrand){
