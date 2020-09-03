@@ -26,7 +26,7 @@ public class AlcoholBrandController {
     @CrossOrigin(origins = "*")
     @GetMapping("/get_brands")
     public ResponseEntity<List<AlcoholBrandDTO>> getAllBrands(){
-        System.out.println(Arrays.toString(this.alcoholBrandService.readAllAlcoholBrands().toArray()));
+        //System.out.println(Arrays.toString(this.alcoholBrandService.readAllAlcoholBrands().toArray()));
         return ResponseEntity.ok(this.alcoholBrandService.readAllAlcoholBrands());
     }
     /*@GetMapping("/")
@@ -58,6 +58,7 @@ public class AlcoholBrandController {
     @CrossOrigin(origins = "*")
     @PutMapping("/update_alcohol_brand/{id}")
     public AlcoholBrandDTO updateAlcoholBrand(@PathVariable Long id, @RequestBody AlcoholBrand alcoholBrand){
+        System.out.println("id: "+ id + "alcholobj" + alcoholBrand);
         return this.alcoholBrandService.updateAlcoholBrand(id, alcoholBrand);
     }
 }

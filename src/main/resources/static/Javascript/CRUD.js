@@ -102,13 +102,16 @@ function updateBrand(){
         let item = elements.item(i);
         obj[item.name] = item.value;
     }
-    console.log(obj)
-    let id = Number(obj.id);
-    console.log(id);
-    console.log(obj.name);
+
     const req = new XMLHttpRequest();
-    let url = "http://localhost:8080/update_alcoholBrand/"+id;
-    console.log(url)
-    req.open("PUT", "http://localhost:8080/ update_alcoholBrand/"+id+"/"+obj);
-    req.send();
+    req.open("PUT", "http://localhost:8080/update_alcohol_brand/"+obj.id);
+    req.onload = () => {
+        if (req.status === 200 && req.readyState == 4) {
+            console.log("Server Responded with: " + req.responseText);
+        } else {
+            console.log("Oops...");
+        }
+    };
+    req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    req.send(JSON.stringify({name: obj.name}));
 }
