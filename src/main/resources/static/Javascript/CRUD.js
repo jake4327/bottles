@@ -49,7 +49,7 @@ function displayAlcoholBrands(){
 
 }
 
-function submitBrand(){
+function createBrand(){
     let elements = document.getElementById("form_input_data").elements;
     console.log(elements);
     let obj ={};
@@ -86,15 +86,29 @@ function deleteBrand() {
         console.log("FOR LOOP item", item.value)
     }
     const req = new XMLHttpRequest();
-    console.log("Request")
     let id = Number(obj.id);
-    console.log(id.type);
     let url = "http://localhost:8080/delete_alcoholBrand/"+id;
-    console.log("URL",url);
     req.open("DELETE", "http://localhost:8080/delete_alcoholBrand/"+id);
     console.log("Request Sent")
     req.send();
 
 }
 
-//function updateBrand(){}
+function updateBrand(){
+    let elements = document.getElementById("updateFrom").elements;
+    let obj = {};
+    console.log("FOR LOOP BEFORE", obj)
+    for(let i = 0 ; i < elements.length; i++){
+        let item = elements.item(i);
+        obj[item.name] = item.value;
+    }
+    console.log(obj)
+    let id = Number(obj.id);
+    console.log(id);
+    console.log(obj.name);
+    const req = new XMLHttpRequest();
+    let url = "http://localhost:8080/update_alcoholBrand/"+id;
+    console.log(url)
+    req.open("PUT", "http://localhost:8080/ update_alcoholBrand/"+id+"/"+obj);
+    req.send();
+}

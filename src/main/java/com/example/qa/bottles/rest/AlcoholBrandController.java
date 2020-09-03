@@ -3,6 +3,8 @@ package com.example.qa.bottles.rest;
 import com.example.qa.bottles.domain.AlcoholBrand;
 import com.example.qa.bottles.dto.AlcoholBrandDTO;
 import com.example.qa.bottles.service.AlcoholBrandService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,15 +48,16 @@ public class AlcoholBrandController {
                 : ResponseEntity.noContent().build();
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/get_alcoholBrand_by_id/{id}")
     public ResponseEntity<AlcoholBrandDTO> getAlcoholBrandById(@PathVariable Long id){
         return ResponseEntity.ok(this.alcoholBrandService.findAlcoholBrandById(id));
-
     }
 
-    @PutMapping("/update_alcoholBrand/{id}")
-    public ResponseEntity<AlcoholBrandDTO> updateNoteWithPathParam(@PathParam("id") Long id, @RequestBody AlcoholBrand alcoholBrand) {
-        return ResponseEntity.ok(this.alcoholBrandService.updateAlcoholBrand(id, alcoholBrand));
+
+    @CrossOrigin(origins = "*")
+    @PutMapping("/update_alcohol_brand/{id}")
+    public AlcoholBrandDTO updateAlcoholBrand(@PathVariable Long id, @RequestBody AlcoholBrand alcoholBrand){
+        return this.alcoholBrandService.updateAlcoholBrand(id, alcoholBrand);
     }
-    
 }

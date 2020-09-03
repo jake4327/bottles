@@ -40,9 +40,9 @@ public class AlcoholBrandService {
 
     }
 
-    public AlcoholBrandDTO updateAlcoholBrand(Long id, AlcoholBrand alcoholBrand){
+    public AlcoholBrandDTO updateAlcoholBrand(Long id, AlcoholBrand alcoholBrand1){
         AlcoholBrand update = this.repo.findById(id).orElseThrow(AlcoholBrandNotFoundException::new);
-        update.setName(alcoholBrand.getName());
+        update.setName(alcoholBrand1.getName());
         return this.mapToDTO(repo.save(update));
     }
 
