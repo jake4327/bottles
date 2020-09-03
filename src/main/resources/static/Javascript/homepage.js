@@ -74,3 +74,27 @@ function submitBrand(){
     req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     req.send(JSON.stringify({name: obj.name}));
 }
+
+function deleteBrand() {
+    let elements = document.getElementById("deleteData").elements;
+    console.log("Press");
+    let obj ={};
+    console.log("FOR LOOP BEFORE", obj)
+    for(let i = 0 ; i < elements.length; i++){
+        let item = elements.item(i);
+        obj[item.name] = item.value;
+        console.log("FOR LOOP item", item.value)
+    }
+    const req = new XMLHttpRequest();
+    console.log("Request")
+    let id = Number(obj.id);
+    console.log(id.type);
+    let url = "http://localhost:8080/delete_alcoholBrand/"+id;
+    console.log("URL",url);
+    req.open("DELETE", "http://localhost:8080/delete_alcoholBrand/"+id);
+    console.log("Request Sent")
+    req.send();
+
+}
+
+//function updateBrand(){}

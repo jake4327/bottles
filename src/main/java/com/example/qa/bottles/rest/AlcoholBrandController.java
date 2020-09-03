@@ -11,11 +11,11 @@ import javax.websocket.server.PathParam;
 import java.util.Arrays;
 import java.util.List;
 
+
 @RestController
 public class AlcoholBrandController {
 
     private final AlcoholBrandService alcoholBrandService;
-
 
     public AlcoholBrandController(AlcoholBrandService alcoholBrandService) {
         this.alcoholBrandService = alcoholBrandService;
@@ -38,6 +38,7 @@ public class AlcoholBrandController {
         return new ResponseEntity<AlcoholBrandDTO>(this.alcoholBrandService.createAlcoholBrand(alcoholBrand), HttpStatus.CREATED);
     }
 
+    @CrossOrigin(origins = "*")
     @DeleteMapping("/delete_alcoholBrand/{id}")
     public ResponseEntity<?> deleteAlcoholBrand(@PathVariable Long id){
         return this.alcoholBrandService.deleteAlcoholBrandById(id)
