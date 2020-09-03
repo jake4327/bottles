@@ -32,6 +32,7 @@ public class AlcoholBrandController {
         return ResponseEntity.ok(this.noteService.readAllNotes());
     }*/
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/create_brand")
     public ResponseEntity<AlcoholBrandDTO> createAlcoholBrand(@RequestBody AlcoholBrand alcoholBrand){
         return new ResponseEntity<AlcoholBrandDTO>(this.alcoholBrandService.createAlcoholBrand(alcoholBrand), HttpStatus.CREATED);

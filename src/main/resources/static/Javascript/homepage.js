@@ -27,11 +27,8 @@ function displayAlcoholBrands(){
                     el.bottles.forEach(bottle => {
                         console.log(bottle) // print all notes for each notebook
                         let title = document.createElement('p');
-                        let description = document.createElement('p');
-                        title.textContent = "Title: " + bottle.name;
-
+                        title.textContent = "Bottle: " + bottle.name;
                         elem.appendChild(title);
-                        elem.appendChild(description);
                     })
                     document.body.appendChild(elem);
                 });
@@ -50,4 +47,30 @@ function displayAlcoholBrands(){
     console.log("C")
     req.send();
 
+}
+
+function submitBrand(){
+    let elements = document.getElementById("form_input_data").elements;
+    console.log(elements);
+    let obj ={};
+    console.log("FOR LOOP BEFORE", obj)
+    for(let i = 0 ; i < elements.length; i++){
+        let item = elements.item(i);
+        obj[item.name] = item.value;
+        console.log("FOR LOOP item", item.value)
+    }
+    console.log("FOR LOOP AFTER", obj)
+
+    console.log(obj)
+    const req = new XMLHttpRequest();
+    req.open("POST", "http://localhost:8080/create_brand");
+    req.onload = () => {
+        if (req.status === 200 && req.readyState == 4) {
+            console.log("Server Responded with: " + req.responseText);
+        } else {
+            console.log("Oops...");
+        }
+    };
+    req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    req.send(JSON.stringify({name: obj.name}));
 }
