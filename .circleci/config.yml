@@ -4,21 +4,22 @@ jobs:
     machine:
       enabled: true
     steps:
-      - run: echo "Tests can run here!"
+      - run: echo "Test can run here!"
   deploy:
     machine:
       enabled: true
     steps:
       - run:
-          name: Install NodeJS & NPM
-          command: ssh $SSH_USER@$SSH_HOST "sudo apt-get update && sudo apt-get install curl && curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && sudo apt-get install -y nodejs"
+          name: Install Java & Maven
+          command: ssh $SSH_USER@$SSH_HOST "sudo apt-get update && sudo apt-get install -y curl git && sudo apt-get install -y openjdk-8-jdk"
       - run:
           name: Clone Repo & Install Application Dependencies
-          command: ssh $SSH_USER@$SSH_HOST "git clone https://github.com/jake4327/bottles && cd ~/bottles && npm install"
+          command: ssh $SSH_USER@$SSH_HOST "git clone https://github.com/jake4327/bottles.git && cd ~/bottles && sudo apt-get install -y maven"
       - run:
           name: Deploy Application
-          command: ssh $SSH_USER@$SSH_HOST "cd ~/bottles && npm run serve"
+          command: ssh $SSH_USER@$SSH_HOST "cd ~/bottles && mvn verify"
 workflows:
+  version: 2.1
   test-and-deploy:
     jobs:
       - test
