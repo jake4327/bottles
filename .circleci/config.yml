@@ -1,0 +1,25 @@
+version: 2.1
+jobs:
+  test:
+    machine:
+      enabled: true
+    steps:
+      - run: echo "Test can run here!"
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - run:
+          name: Install Java & Maven
+          command: ssh $SSH_USER@$SSH_HOST "sudo apt-get update && sudo apt-get install -y curl git && sudo apt-get install -y openjdk-8-jdk"
+      - run:
+          name: Deploy Application
+          command: ssh $SSH_USER@$SSH_HOST "cd ~/bottles && mvn verify"
+workflows:
+  version: 2.1
+  test-and-deploy:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
