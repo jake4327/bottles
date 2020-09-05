@@ -11,10 +11,13 @@ jobs:
     steps:
       - run:
           name: Install Java & Maven
-          command: ssh $SSH_USER@$SSH_HOST "sudo apt-get update && sudo apt-get install -y curl git && sudo apt-get install -y openjdk-8-jdk"
+          command: ssh $SSH_USER@$SSH_HOST "sudo apt-get update && sudo apt-get install -y curl git && sudo apt-get install -y openjdk-8-jdk" 
       - run:
-          name: Pull git and install maven
-          command: ssh $SSH_USER@$SSH_HOST "cd ~/bottles git pull && cd ~/bottles && sudo apt-get install -y maven"
+          name: Pull git 
+          command: ssh $SSH_USER@$SSH_HOST "cd ~/bottles && git pull"
+      - run:
+          name: install maven
+          command: ssh $SSH_USER@$SSH_HOST "cd ~/bottles && sudo apt-get install -y maven"
       - run:
           name: Deploy Application
           command: ssh $SSH_USER@$SSH_HOST "cd ~/bottles && mvn verify"
