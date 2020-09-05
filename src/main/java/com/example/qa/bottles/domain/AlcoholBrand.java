@@ -1,19 +1,21 @@
 package com.example.qa.bottles.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class AlcoholBrand {
 
     @Id
     @GeneratedValue
-    private Long alcoholBrandId;
+    private Long id;
 
     @Column
     private String name;
+
+    @OneToMany(mappedBy = "alcoholBrand", fetch = FetchType.LAZY)
+    private List<Bottle> bottles = new ArrayList<>();
 
     public AlcoholBrand(){
     }
@@ -22,13 +24,13 @@ public class AlcoholBrand {
         this.name = name;
     }
 
-    public Long getAlcoholBrandId() {
-        return alcoholBrandId;
+    public Long getId() {
+        return id;
     }
 
-   /* public void setAlcoholBrandId(Long alcoholBrandId) {
-        this.alcoholBrandId = alcoholBrandId;
-    }*/
+    public void setId(Long alcoholBrandId) {
+        this.id = alcoholBrandId;
+    }
 
     public String getName() {
         return name;
@@ -36,5 +38,13 @@ public class AlcoholBrand {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Bottle> getBottles() {
+        return bottles;
+    }
+
+    public void setNotes(List<Bottle> notes) {
+        this.bottles = bottles;
     }
 }
