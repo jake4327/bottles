@@ -22,7 +22,10 @@ jobs:
           name: Deploy Application
           command: ssh $SSH_USER@$SSH_HOST "cd ~/bottles && mvn verify"
       - run:
-          name: Run application
+          name: Delete Old DataBase
+          command: ssh $SSH_USER@SSH_HOST "rm bottles.mv.db"
+      - run:
+          name: Run application 
           command: ssh $SSH_USER@$SSH_HOST "cd ~/bottles && mvn -Dmaven.test.skip=true spring-boot:run" 
 workflows:
   version: 2.1
