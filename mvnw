@@ -63,7 +63,7 @@ case "`uname`" in
         export JAVA_HOME="/Library/Java/Home"
       fi
     fi
-    ;;
+    ;;8080
 esac
 
 if [ -z "$JAVA_HOME" ] ; then

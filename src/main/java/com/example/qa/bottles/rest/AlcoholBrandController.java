@@ -23,6 +23,12 @@ public class AlcoholBrandController {
         this.alcoholBrandService = alcoholBrandService;
     }
 
+    @GetMapping("/")
+    public String welcomE(){
+        return "hello world";
+    }
+
+
     @CrossOrigin(origins = "*")
     @GetMapping("/get_brands")
     public ResponseEntity<List<AlcoholBrandDTO>> getAllBrands(){

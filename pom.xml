@@ -11,9 +11,9 @@
     </parent>
 
     <groupId>com.qa</groupId>
-    <artifactId>notes</artifactId>
+    <artifactId>bottles</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>notes</name>
+    <name>bottles</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

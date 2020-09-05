@@ -12,6 +12,8 @@ import java.util.logging.Logger;
 IN THE DIR OF THE application
 mvn install
 java -jar /home/qa/Documents/Java_Assessment/bottles/target/notes.jar
+OR
+mvn -Dmaven.test.skip=true spring-boot:run
  */
 @SpringBootApplication
 public class BottlesApplication {
