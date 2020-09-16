@@ -14,6 +14,8 @@ mvn install
 java -jar /home/qa/Documents/Java_Assessment/bottles/target/notes.jar
 OR
 mvn -Dmaven.test.skip=true spring-boot:run
+
+CHANGE H" to sa database that works with GCP
  */
 @SpringBootApplication
 public class BottlesApplication {
